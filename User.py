@@ -1,12 +1,15 @@
 import datetime
+import db 
+
 class User():
-  def __init__(self,username,password,firstName,lastName,birthday,gender):
+  def __init__(self,username,password,firstName,lastName,birthday,gender,romanticPreference):
     self.__username = username
     self.__password = password
     self.__firstName = firstName
     self.__lastName = lastName
     self.__birthday = birthday #should be in YYYY/MM/DD format
     self.__gender = gender
+    self.__romanticPreference = romanticPreference
   def getUsername(self):
     return self.__username
   def getPassword(self):
