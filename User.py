@@ -1,5 +1,4 @@
 import datetime
-import db 
 
 class User():
   def __init__(self,username,password,firstName,lastName,birthday,gender,romanticPreference):
@@ -25,9 +24,15 @@ class User():
     currentDate = datetime.datetime.now()
     age = (currentDate - birthdayDate)/365.25
     return age
+  def getGender(self):
+    return self.__gender
+  def getRomanticPreference(self):
+    return self.__romanticPreference
   def changePassword(self,newPassword):
     self.__password = newPassword
   def initializeSurvey(self):
     print('survey')
+  def takeSurvey():
+    print('You will now take the survey. Please answer these questions to the best of your ability.')
   
     
