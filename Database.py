@@ -6,5 +6,4 @@ class Database():
     self.__userList = userList
 
 
-  def create(self):
-    
+  
