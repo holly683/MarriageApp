@@ -1,33 +1,10 @@
-from replit import db
 from User import *
 
 class ManagementSystem():
   def __init__(self,userList):
     self.__userList = userList
-    self.__mbtiList = ['INFP','ENFP','INFJ','ENFJ','INTJ','ENTJ','INTP','ENTP','ISFP','ESFP','ISTP','ESTP','ISFJ','ESFJ','ISTJ','ESTJ']
-    self.__mbtiChart = []
-    f = open("mbtiChart.txt",'r')
-    for line in f:
-      self.__mbtiChart.append(line.split())
-    f.close()
-  def newUser(self,username,password,firstName,lastName,birthday,gender,romanticPreference):
-    #adds a user to the dictionary and creates a user object that is returned
-    dic = {
-      'password': password, 
-      'firstName': firstName,
-      'lastname': lastName,
-      'birthday': birthday,
-      'gender': gender,
-      'romanticPreference': romanticPreference
-    }
-    db[username] = dic
-    return User(username,password,firstName,lastName,birthday,gender,romanticPreference)
-  def getMBTIListIndex(self,mbti):
-    return self.__mbtiList.index(mbti)
-  def getUserList(self):
-    return self.__userList
-  def getMBTIChart(self):
-    return self.__mbtiChart
+    
+  
   def getTraitCompatibilityPercentage(user1,user2):
     pT1 = 0
     for x in user1.getTraitsWanted():
