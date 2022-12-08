@@ -1,6 +1,6 @@
 from User import *
 
-class ManagementSystem():
+class ManagementSystem:
   def __init__(self,userList):
     self.__userList = userList
     
@@ -60,7 +60,17 @@ class ManagementSystem():
     for match in bestMatches:
       print(match[1].getUsername()+': '+str(round(match[0],2))+'% match')
     
-    
+class User(ManagementSystem): 
+  def __init__(self, username, password, firstName, lastName, birthday, surveyDictionary, martialStatus, email):
+    self.__firstName = firstName
+    self.__secondName = lastName
+    self.__birthday = birthday
+    self.__martialStatus = martialStatus
+    self.__surveyDictionary = surveyDictionary
+    self.__email = email
+    super().__init__(username, password)
+
+  def takeSurvey(self):
     
   
     
