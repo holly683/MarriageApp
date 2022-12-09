@@ -71,7 +71,15 @@ class User(ManagementSystem):
     super().__init__(username, password)
 
   def takeSurvey(self):
+    userMBTI = input('What is your Myers-Briggs personality type? ')
+    surveyQ1 = {'mcti':userMBTI}
+    userOpinionAboutPets = input('Do you own or want to own pets (please press Y if you do, N if you do not)? ')
+    surveyQ2 = {'pets':userOpinionAboutPets}
+    userInterest = input('Which one of the following topics are you the most interested in? 1) Politics; 2) Music; 3) Sports; 4) Art; 5) Science: ')
     
-  
+    userAgeImportance = input('What age difference do you find find acceptable? 1) Up to a year; 2) Up to three years; 3) Up to five years; 4) Up to seven years; 5) It does not matter. ')
     
+    userLoveLanguage = input('What is your Love Language? 1) Quality time; 2) Acts of service; 3) Gift-giving; 4) Words of Affirmation; 5)Physical Touch: ')
+    
+    self.__surveyDictionary.update(surveyQ1,surveyQ2,)
   
