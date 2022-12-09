@@ -72,14 +72,36 @@ class User(ManagementSystem):
 
   def takeSurvey(self):
     userMBTI = input('What is your Myers-Briggs personality type? ')
-    surveyQ1 = {'mcti':userMBTI}
-    userOpinionAboutPets = input('Do you own or want to own pets (please press Y if you do, N if you do not)? ')
+    surveyQ1 = {'mbti':userMBTI}
+    userOpinionAboutPets = input('Do you own or want to own pets?\n Please press Y if you do or N if you do not. ')
     surveyQ2 = {'pets':userOpinionAboutPets}
-    userInterest = input('Which one of the following topics are you the most interested in? 1) Politics; 2) Music; 3) Sports; 4) Art; 5) Science: ')
-    
-    userAgeImportance = input('What age difference do you find find acceptable? 1) Up to a year; 2) Up to three years; 3) Up to five years; 4) Up to seven years; 5) It does not matter. ')
-    
-    userLoveLanguage = input('What is your Love Language? 1) Quality time; 2) Acts of service; 3) Gift-giving; 4) Words of Affirmation; 5)Physical Touch: ')
-    
-    self.__surveyDictionary.update(surveyQ1,surveyQ2,)
+    userInterest = input('Which one of the following topics are you the most interested in?\n 1) Politics; 2) Music; 3) Sports; 4) Art; 5) Science: ')
+    surveyQ3 = {'interest': userInterest}
+    userAgeImportance = input('What age difference do you find acceptable?\n 1) Up to a year; 2) Up to three years; 3) Up to five years; 4) Up to seven years; 5) It does not matter. ')
+    surveyQ4 = {'age importance': userAgeImportance}
+    userLoveLanguage = input('What is your Love Language?\n 1) Quality time; 2) Acts of service; 3) Gift-giving; 4) Words of Affirmation; 5)Physical Touch: ')
+    surveyQ5 = {'love language': userLoveLanguage}
+    userDesiredTraits = input('What personality trait do you appreciate the most?\n 1) Kindness; 2) Confidence; 3) Cleverness; 4) Bravery; 5) Humor: ')
+    surveyQ6 = {'desired trait': userDesiredTraits}
+    userPersonalityTraits = input('Which adjective fits your personlaity the most?\n 1) Kind; 2) Confident; 3) Clever; 4) Brave; 5) Funny: ') 
+    surveyQ7 = {'personality trait': userPersonalityTraits}
+    userReligionImportance = input('Is it important that your partner shares your religious viewpoints?\n Please press Y if you do or N if you do not. ')
+    surveyQ8 = {'religion':userReligionImportance}
+    if userReligionImportance.lower() == 'y':
+      userReligion = input('Are you religious?\n 1) Atheist; 2) Christian; 3) Muslim; 4) Buddhist; 5) Satanist: ')
+      surveyQ9 = {'religion': userReligion}
+      self.__surveyDictionary.update(surveyQ9)
+    userFreeTime= input('Would you prefer to spend your free time indoors or outdoors?\n Please press 1 if indoors or 2 if outdoors. ')
+    surveyQ10 = {'free time': userFreeTime}
+    self.__surveyDictionary.update(surveyQ1)
+    self.__surveyDictionary.update(surveyQ2)
+    self.__surveyDictionary.update(surveyQ3)
+    self.__surveyDictionary.update(surveyQ4)
+    self.__surveyDictionary.update(surveyQ5)
+    self.__surveyDictionary.update(surveyQ6)
+    self.__surveyDictionary.update(surveyQ7)
+    self.__surveyDictionary.update(surveyQ8)
+    self.__surveyDictionary.update(surveyQ10)
+
+    return self.__surveyDictionary
   
