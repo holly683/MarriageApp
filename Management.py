@@ -60,7 +60,7 @@ class ManagementSystem:
     for match in bestMatches:
       print(match[1].getUsername()+': '+str(round(match[0],2))+'% match')
     
-class User(ManagementSystem): 
+class User: 
   def __init__(self, username, password, firstName, lastName, birthday, surveyDictionary, martialStatus, email):
     self.__firstName = firstName
     self.__secondName = lastName
@@ -68,7 +68,8 @@ class User(ManagementSystem):
     self.__martialStatus = martialStatus
     self.__surveyDictionary = surveyDictionary
     self.__email = email
-    super().__init__(username, password)
+    self.__username = username
+    self.__password = password
 
   def takeSurvey(self):
     userMBTI = input('What is your Myers-Briggs personality type? ')
@@ -106,4 +107,18 @@ class User(ManagementSystem):
     self.__surveyDictionary.update(surveyQ11)
 
     return self.__surveyDictionary
-  
+
+firstName = input('Your name: ')
+lastName = input('Last name: ') 
+birthday = input('Birthday (dd-mm-yy): ')
+surveyDictionary = {}
+martialStatus = 'Single'
+def eMail():
+  email = input('Email: ')
+  if '@' not in email:
+    print('Please print a valid email.')
+    eMail()
+  return email
+
+user = User(username, password, firstName, lastName, birthday, surveyDictionary, martialStatus, email)
+
