@@ -81,18 +81,18 @@ class User(ManagementSystem):
     surveyQ4 = {'age importance': userAgeImportance}
     userLoveLanguage = input('What is your Love Language?\n 1) Quality time; 2) Acts of service; 3) Gift-giving; 4) Words of Affirmation; 5)Physical Touch: ')
     surveyQ5 = {'love language': userLoveLanguage}
-    userDesiredTraits = input('What personality trait do you appreciate the most?\n 1) Kindness; 2) Confidence; 3) Cleverness; 4) Bravery; 5) Humor: ')
+    userDesiredTraits = input('What personality trait do you appreciate the most?\n 1) Kindness; 2) Confidence; 3) Intelligence; 4) Bravery; 5) Humor: ')
     surveyQ6 = {'desired trait': userDesiredTraits}
-    userPersonalityTraits = input('Which adjective fits your personlaity the most?\n 1) Kind; 2) Confident; 3) Clever; 4) Brave; 5) Funny: ') 
+    userPersonalityTraits = input('Which adjective fits your personlaity the most?\n 1) Kind; 2) Confident; 3) Intelligent; 4) Brave; 5) Funny: ') 
     surveyQ7 = {'personality trait': userPersonalityTraits}
     userReligionImportance = input('Is it important that your partner shares your religious viewpoints?\n Please press Y if you do or N if you do not. ')
     surveyQ8 = {'religion':userReligionImportance}
-    if userReligionImportance.lower() == 'y':
-      userReligion = input('Are you religious?\n 1) Atheist; 2) Christian; 3) Muslim; 4) Buddhist; 5) Satanist: ')
-      surveyQ9 = {'religion': userReligion}
-      self.__surveyDictionary.update(surveyQ9)
+    userReligion = input('Are you religious?\n 1) Atheist; 2) Christian; 3) Muslim; 4) Hindus; 5) Satanist: ')
+    surveyQ9 = {'religion': userReligion}
     userFreeTime= input('Would you prefer to spend your free time indoors or outdoors?\n Please press 1 if indoors or 2 if outdoors. ')
     surveyQ10 = {'free time': userFreeTime}
+    userOpinionAboutKids = input('Do you have or want to have kids?\n Please press Y if you do or N if you do not. ')
+    surveyQ11 = {'kids':userOpinionAboutKids}
     self.__surveyDictionary.update(surveyQ1)
     self.__surveyDictionary.update(surveyQ2)
     self.__surveyDictionary.update(surveyQ3)
@@ -101,7 +101,9 @@ class User(ManagementSystem):
     self.__surveyDictionary.update(surveyQ6)
     self.__surveyDictionary.update(surveyQ7)
     self.__surveyDictionary.update(surveyQ8)
+    self.__surveyDictionary.update(surveyQ9)
     self.__surveyDictionary.update(surveyQ10)
+    self.__surveyDictionary.update(surveyQ11)
 
     return self.__surveyDictionary
   
