@@ -38,26 +38,38 @@ class User():
     print('You will now take the survey. Please answer these questions to the best of your ability.')
     
     userMBTI = input('What is your Myers-Briggs personality type? ')
+    userMBTI.lower()
     surveyQ1 = {'mbti':userMBTI}
     userOpinionAboutPets = input('Do you own or want to own pets?\n Please press Y if you do or N if you do not. ')
+    userOpinionAboutPets.lower()
     surveyQ2 = {'pets':userOpinionAboutPets}
-    userInterest = input('Which one of the following topics are you the most interested in?\n 1) Politics; 2) Music; 3) Sports; 4) Art; 5) Science: ')
-    surveyQ3 = {'interest': userInterest}
-    userAgeImportance = input('What age difference do you find acceptable?\n 1) Up to a year; 2) Up to three years; 3) Up to five years; 4) Up to seven years; 5) It does not matter. ')
-    surveyQ4 = {'age importance': userAgeImportance}
-    userLoveLanguage = input('What is your Love Language?\n 1) Quality time; 2) Acts of service; 3) Gift-giving; 4) Words of Affirmation; 5)Physical Touch: ')
+    userInterest = input('Which topics are you the most interested in?\n 1) Politics\n 2) Music\n 3) Sports\n 4) Art\n 5) Science\n')
+    userInterest.lower()
+    userInterest.split(' ')
+    surveyQ3 = {'interests': userInterest}
+    userAgeImportance = input('What age difference do you find acceptable? ')
+    surveyQ4 = {'age importance': int(userAgeImportance)}
+    userLoveLanguage = input('What is your Love Language(s)? Please write them in a decreasing order of importance.\n 1) Quality time\n 2) Acts of service\n 3) Gift-giving\n 4) Words of Affirmation\n 5) Physical Touch\n')
+    userInterest.lower()
+    userInterest.split(' ')
     surveyQ5 = {'love language': userLoveLanguage}
-    userDesiredTraits = input('What personality trait do you appreciate the most?\n 1) Kindness; 2) Confidence; 3) Intelligence; 4) Bravery; 5) Humor: ')
+    userDesiredTraits = input('What personality trait(s) do you appreciate the most?\n 1) Kindness\n 2) Confidence\n 3) Intelligence\n 4) Bravery\n 5) Humor\n')
+    userDesiredTraits.lower()
+    userDesiredTraits.split(' ')
     surveyQ6 = {'desired trait': userDesiredTraits}
-    userPersonalityTraits = input('Which adjective fits your personlaity the most?\n 1) Kind; 2) Confident; 3) Intelligent; 4) Brave; 5) Funny: ') 
+    userPersonalityTraits = input('Which adjective(s) fits your personlaity the most? Please write them in a decreasing order of importance.\n 1) Kind\n 2) Confident\n 3) Intelligent\n 4) Brave\n 5) Funny\n') 
+    userPersonalityTraits.lower()
+    userPersonalityTraits.split(' ')
     surveyQ7 = {'personality trait': userPersonalityTraits}
     userReligionImportance = input('Is it important that your partner shares your religious viewpoints?\n Please press Y if you do or N if you do not. ')
+    userReligionImportance.lower()
     surveyQ8 = {'religion':userReligionImportance}
-    userReligion = input('Are you religious?\n 1) Atheist; 2) Christian; 3) Muslim; 4) Hindus; 5) Satanist: ')
+    userReligion = input('Are you religious?\n 1) Atheist\n 2) Christian\n 3) Muslim\n 4) Hindus\n 5) Satanist\n')
     surveyQ9 = {'religion': userReligion}
     userFreeTime= input('Would you prefer to spend your free time indoors or outdoors?\n Please press 1 if indoors or 2 if outdoors. ')
     surveyQ10 = {'free time': userFreeTime}
     userOpinionAboutKids = input('Do you have or want to have kids?\n Please press Y if you do or N if you do not. ')
+    userOpinionAboutKids.lower()
     surveyQ11 = {'kids':userOpinionAboutKids}
     self.__surveyDictionary.update(surveyQ1)
     self.__surveyDictionary.update(surveyQ2)
