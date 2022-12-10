@@ -38,21 +38,33 @@ class User():
   def getUserMBTI(self):
     return self.__surveyDictionary['MBTI']
   def getUserOpinionAboutPets(self):
-    return self.__surveyDictionary['Want/own a pet']
+    return self.__surveyDictionary['WantPet']
   def getUserInterest(self):
     return self.__surveyDictionary['Interests']
   def getUserAgeImportance(self):
-    return self.__surveyDictionary['Age importance']
+    return self.__surveyDictionary['AgeRange']
   def getUserLoveLanguage(self):
-    return self.__surveyDictionary['Love language']
+    return self.__surveyDictionary['LoveLanguage']
   def getUserDesiredTraits(self):
-    return self.__surveyDictionary['Desired trait']
+    return self.__surveyDictionary['DesiredTraits']
   def getUserPersonalityTraits(self):
-    return self.__surveyDictionary['Personality trait']
+    return self.__surveyDictionary['PersonalityTraits']
   def getUserReligion(self):
     return self.__surveyDictionary['Religion']
   def getUserOpinionAboutKids(self):
-    return self.__surveyDictionary['Want/have children']
+    return self.__surveyDictionary['WantKids']
+  def initializeSurvey(self,interests,traits,traitsWanted,mbti,loveLanguages,ageRange,pet,religionImportance,religion,kids,inOutDoors):
+    self.__surveyDictionary['MBTI'] = mbti
+    self.__surveyDictionary['WantPet'] = pet
+    self.__surveyDictionary['Interests'] = interests
+    self.__surveyDictionary['AgeRange'] = ageRange
+    self.__surveyDictionary['LoveLanguage'] = loveLanguages
+    self.__surveyDictionary['DesiredTraits']=traitsWanted
+    self.__surveyDictionary['PersonalityTraits']=traits
+    self.__surveyDictionary['ReligionImportance'] = religionImportance
+    self.__surveyDictionary['Religion'] = religion
+    self.__surveyDictionary['WantKids'] = kids
+    self.__surveyDictionary['InOutDoors']=inOutDoors
   def takeSurvey(self):
     print('You will now take the survey. Please answer these questions to the best of your ability.')
     
@@ -61,35 +73,35 @@ class User():
     surveyQ1 = {'MBTI':userMBTI}
     userOpinionAboutPets = input('Do you own or want to own pets?\n Please press Y if you do or N if you do not. ')
     userOpinionAboutPets.lower()
-    surveyQ2 = {'Want/own a pet':userOpinionAboutPets}
+    surveyQ2 = {'WantPet':userOpinionAboutPets}
     userInterest = input('Which topics are you the most interested in?\n 1) Politics\n 2) Music\n 3) Sports\n 4) Art\n 5) Science\n')
     userInterest.lower()
     userInterest.split(' ')
     surveyQ3 = {'Interests': userInterest}
     userAgeImportance = input('What age difference do you find acceptable? ')
-    surveyQ4 = {'Age importance': int(userAgeImportance)}
+    surveyQ4 = {'AgeRange': int(userAgeImportance)}
     userLoveLanguage = input('What is your Love Language(s)? Please write them in a decreasing order of importance.\n 1) Quality time\n 2) Acts of service\n 3) Gift-giving\n 4) Words of Affirmation\n 5) Physical Touch\n')
     userLoveLanguage.lower()
     userLoveLanguage.split(' ')
-    surveyQ5 = {'Love language': userLoveLanguage}
+    surveyQ5 = {'LoveLanguage': userLoveLanguage}
     userDesiredTraits = input('What personality trait(s) do you appreciate the most?\n 1) Kindness\n 2) Confidence\n 3) Intelligence\n 4) Bravery\n 5) Humor\n')
     userDesiredTraits.lower()
     userDesiredTraits.split(' ')
-    surveyQ6 = {'Desired trait': userDesiredTraits}
+    surveyQ6 = {'DesiredTraits': userDesiredTraits}
     userPersonalityTraits = input('Which adjective(s) fits your personlaity the most? Please write them in a decreasing order of importance.\n 1) Kind\n 2) Confident\n 3) Intelligent\n 4) Brave\n 5) Funny\n') 
     userPersonalityTraits.lower()
     userPersonalityTraits.split(' ')
-    surveyQ7 = {'Personality trait': userPersonalityTraits}
+    surveyQ7 = {'PersonalityTraits': userPersonalityTraits}
     userReligionImportance = input('Is it important that your partner shares your religious viewpoints?\n Please press Y if you do or N if you do not. ')
     userReligionImportance.lower()
-    surveyQ8 = {'Religion importance':userReligionImportance}
+    surveyQ8 = {'ReligionImportance':userReligionImportance}
     userReligion = input('Are you religious?\n 1) Atheist\n 2) Christian\n 3) Muslim\n 4) Hindus\n 5) Satanist\n')
     surveyQ9 = {'Religion': userReligion}
     userFreeTime= input('Would you prefer to spend your free time indoors or outdoors?\n Please press 1 if indoors or 2 if outdoors. ')
-    surveyQ10 = {'Free time': userFreeTime}
+    surveyQ10 = {'InOutDoors': userFreeTime}
     userOpinionAboutKids = input('Do you have or want to have kids?\n Please press Y if you do or N if you do not. ')
     userOpinionAboutKids.lower()
-    surveyQ11 = {'Want/have kids':userOpinionAboutKids}
+    surveyQ11 = {'WantKids':userOpinionAboutKids}
     self.__surveyDictionary.update(surveyQ1)
     self.__surveyDictionary.update(surveyQ2)
     self.__surveyDictionary.update(surveyQ3)
