@@ -1,7 +1,7 @@
 import datetime
 
 class User():
-  def __init__(self,username,password,firstName,lastName,birthday,gender,romanticPreference, surveyDictionary, martialStatus):
+  def __init__(self,username,password,firstName,lastName,birthday,gender,romanticPreference, surveyDictionary, maritalStatus):
     self.__username = username
     self.__password = password
     self.__firstName = firstName
@@ -9,8 +9,8 @@ class User():
     self.__birthday = birthday #should be in YYYY/MM/DD format
     self.__gender = gender
     self.__romanticPreference = romanticPreference
-    self.__martialStatus = martialStatus
     self.__surveyDictionary = surveyDictionary
+    self.__maritalStatus = maritalStatus
   def getUsername(self):
     return self.__username
   def getPassword(self):
@@ -18,7 +18,7 @@ class User():
   def getFirstName(self):
     return self.__firstName
   def getLastName(self):
-    return self.__lastname
+    return self.__lastName
   def getBirthday(self):
     return self.__birthday
   def getAge(self):
@@ -30,11 +30,12 @@ class User():
     return self.__gender
   def getRomanticPreference(self):
     return self.__romanticPreference
-  def getMartialStatus(self):
-    return self.__martialStatus
+  def getMaritalStatus(self):
+    return self.__maritalStatus
   def getSurveyAnswers(self):
-    for i in self.__surveyDictionary.keys():
-      print(self.__surveyDictionary.keys(),':',self.__surveyDictionary[i])
+    # for i in self.__surveyDictionary.keys():
+    #   print(self.__surveyDictionary.keys(),':',self.__surveyDictionary[i])
+    return self.__surveyDictionary
   def getUserMBTI(self):
     return self.__surveyDictionary['MBTI']
   def getUserOpinionAboutPets(self):
@@ -113,23 +114,36 @@ class User():
     self.__surveyDictionary.update(surveyQ9)
     self.__surveyDictionary.update(surveyQ10)
     self.__surveyDictionary.update(surveyQ11)
-
     return self.__surveyDictionary
-  def userToString(self, newUser):
-    userString = newUser.getUsername() + " " + newUser.getPassword() + " " + newUser.getFirstName() + " " + newUser.getLastName() + " " + newUser.getBirthday() + " " + newUser.getGender() + " " + listToString(newUser.getRomanticPreference()) + " " + newUser.getMaritalStatus()
-    if len(newUser.getSurveyAnswers()) > 0:
-      for x in newUser.getSurveyAnswers():
-        if isinstance(newUser.getSurveyAnswers()[x], list):
-          userString = userString + " " + listToString(newUser.getSurveyAnswers()[x])
+  
+  def listToString(self, l):
+    s = ""
+    for x in l:
+      s = s + x + ','
+    s = s[:-1]
+    return s
+  def userToString(self):
+    userString = self.getUsername() + " " + self.getPassword(
+  ) + " " + self.getFirstName() + " " + self.getLastName(
+  ) + " " + self.getBirthday() + " " + self.getGender(
+  ) + " " + self.listToString(
+    self.getRomanticPreference()) + " " + self.getMaritalStatus()
+    if len(self.getSurveyAnswers()) > 0:
+      for x in self.getSurveyAnswers():
+        if isinstance(self.getSurveyAnswers()[x], list):
+          userString = userString + " " + self.listToString(self.getSurveyAnswers()[x])
         else:
-          userString = userString + " " + str(newUser.getSurveyAnswers()[x])
+          userString = userString + " " + str(self.getSurveyAnswers()[x])
+    print(userString)
+    return userString
+  
           
-firstName = input('Your name: ')
-lastName = input('Last name: ') 
-birthday = input('Birthday (yyyy/mm/dd): ')
-surveyDictionary = {}
-martialStatus = 'Single'
+# firstName = input('Your name: ')
+# lastName = input('Last name: ') 
+# birthday = input('Birthday (yyyy/mm/dd): ')
+# surveyDictionary = {}
+# martialStatus = 'Single'
 
-#username and password will be retrieved from the Management System class
+# #username and password will be retrieved from the Management System class
 
-user = User(username, password, firstName, lastName, birthday, surveyDictionary, martialStatus)
+# user = User(username, password, firstName, lastName, birthday, surveyDictionary, martialStatus)

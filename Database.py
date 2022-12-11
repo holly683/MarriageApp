@@ -3,9 +3,8 @@ from replit import db
 
 
 class Database():
-
-  def __init__(self, userList):
-    self.__userList = userList
+  def __init__(self):
+    self.__userList = self.populateUserList()
 
   def findUserByUsername(self, username):
     for user in db:
@@ -25,22 +24,18 @@ class Database():
         if user.getPassword() == db[user.getUsername()[1]]:
           return db[user.getUsername()[1]]
     return -1
-
-  def listToString(self, l):
-    s = ""
-    for x in l:
-      s = s + x + ','
-    s = s[:-1]
-    return s
-
+  
   def stringToBool(self, s):
     if s == "True":
       return True
     else:
       return False
-
-  def getUserFromDB(self, username):
-    userSplit = db[username].split()
+  def updateDatabase(self,userToUpdate):
+    userString = userToUpdate.userToString()
+    db[userToUpdate.getUsername()] = userString
+  
+  def getUserFromDB(self, userString):
+    userSplit = userString.split()
     username = userSplit[0]
     password = userSplit[1]
     firstName = userSplit[2]
@@ -62,16 +57,21 @@ class Database():
       wantKids = stringToBool(userSplit[17])
       inOutDoors = userSplit[18]
       newUser = User(username, password, firstName, lastName, birthday, gender, romanticPreference, {}, maritalStatus)
-      newUser.initializeSurvey(mbti, wantPet, interests, ageRange,loveLanguages, traitsWanted, traits, religionImportance, religion, wantKids, inOutDoors)
+      newUser.initializeSurvey(mbti, wantPet, interests, ageRange, loveLanguages, traitsWanted, traits, religionImportance,religion, wantKids, inOutDoors)
     except:
       newUser = User(username, password, firstName, lastName, birthday, gender, romanticPreference, {}, maritalStatus)
     return newUser
-
+    
   def populateUserList(self):
     userList = []
-    for userString in db:
-      userList.append(getUserFromDB(db[userString]))
+    for username in db:
+      userList.append(self.getUserFromDB(db[username]))
     return userList
 
+  def getUserList(self):
+    return self.__userList
 
-db[newUser.getUsername()] = userString
+  def updateUserList(self,userToAdd):
+    self.__userList.append(userToAdd)
+
+
