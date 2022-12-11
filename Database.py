@@ -46,15 +46,15 @@ class Database():
     maritalStatus = userSplit[7]
     try:
       mbti = userSplit[8]
-      wantPet = stringToBool(userSplit[9])
+      wantPet = self.stringToBool(userSplit[9])
       interests = userSplit[10].split(',')
       ageRange = userSplit[11]
       loveLanguages = userSplit[12].split(',')
       traitsWanted = userSplit[13].split(',')
       traits = userSplit[14].split(',')
-      religionImportance = stringToBool(userSplit[15])
+      religionImportance = self.stringToBool(userSplit[15])
       religion = userSplit[16]
-      wantKids = stringToBool(userSplit[17])
+      wantKids = self.stringToBool(userSplit[17])
       inOutDoors = userSplit[18]
       newUser = User(username, password, firstName, lastName, birthday, gender, romanticPreference, {}, maritalStatus)
       newUser.initializeSurvey(mbti, wantPet, interests, ageRange, loveLanguages, traitsWanted, traits, religionImportance,religion, wantKids, inOutDoors)
