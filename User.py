@@ -115,7 +115,15 @@ class User():
     self.__surveyDictionary.update(surveyQ11)
 
     return self.__surveyDictionary
-
+  def userToString(self, newUser):
+    userString = newUser.getUsername() + " " + newUser.getPassword() + " " + newUser.getFirstName() + " " + newUser.getLastName() + " " + newUser.getBirthday() + " " + newUser.getGender() + " " + listToString(newUser.getRomanticPreference()) + " " + newUser.getMaritalStatus()
+    if len(newUser.getSurveyAnswers()) > 0:
+      for x in newUser.getSurveyAnswers():
+        if isinstance(newUser.getSurveyAnswers()[x], list):
+          userString = userString + " " + listToString(newUser.getSurveyAnswers()[x])
+        else:
+          userString = userString + " " + str(newUser.getSurveyAnswers()[x])
+          
 firstName = input('Your name: ')
 lastName = input('Last name: ') 
 birthday = input('Birthday (yyyy/mm/dd): ')
@@ -124,4 +132,4 @@ martialStatus = 'Single'
 
 #username and password will be retrieved from the Management System class
 
-user = User(username, password, firstName, lastName, birthday, surveyDictionary, martialStatus, email)
+user = User(username, password, firstName, lastName, birthday, surveyDictionary, martialStatus)
