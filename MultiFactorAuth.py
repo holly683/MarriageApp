@@ -39,6 +39,7 @@ class MultiFactorAuth(tk.Tk):
       
     def getDatabase(self):
       return self.database
+      
     def getMS(self):
       return self.ms
     def login(self):
@@ -59,8 +60,8 @@ class MultiFactorAuth(tk.Tk):
         self.btn_login = tk.Button(self.frame_login, text="LOGIN", command=self.authorize)
         self.btn_login.pack(padx=175, pady=17)
 
-        self.btn_change = tk.Button(self.frame_login, text="FORGOT PASSWORD", command=self.forgotPass)
-        self.btn_change.pack(padx=175, pady=20)
+        # self.btn_change = tk.Button(self.frame_login, text="FORGOT PASSWORD", command=self.forgotPass)
+        # self.btn_change.pack(padx=175, pady=20)
 
         self.frame_login.tkraise()
 
@@ -159,8 +160,8 @@ class MultiFactorAuth(tk.Tk):
         self.title("Welcome New User!")
         self.frame_newUser.grid(row=0,column=0,sticky="news")
 
-        database.updateDatabase(newUser1)
-        database.updateUserList(newUser1)
+        # database.updateDatabase(newUser1)
+        # database.updateUserList(newUser1)
         self.lbl_new = tk.Label(self.frame_newUser, text="Take the entry quiz to find your perfect match!", bg="sienna2")
         self.lbl_new.pack(pady=15)
         command=self.quiz(newUser1)
@@ -236,10 +237,10 @@ class MultiFactorAuth(tk.Tk):
       # User.takeSurvey()
       # mb.showinfo(text = User.takeSurvey())
       
-    def forgotPass(self):
-      self.frame_forgotPass = tk.Frame(self, bg="plum4")
-      self.title("Forgot Password")
-      self.frame_forgotPass(row=0, column=0, sticky="news")
+    # def forgotPass(self):
+    #   self.frame_forgotPass = tk.Frame(self, bg="plum4")
+    #   self.title("Forgot Password")
+    #   self.frame_forgotPass(row=0, column=0, sticky="news")
 
     def askForFirstName(self):
       name = input('What is your first name? ')
@@ -267,9 +268,6 @@ class MultiFactorAuth(tk.Tk):
       g = self.askForGender()
       rP = self.askForRomanticPreference()
       u = User(username, password, fName,lName,bDay,g,rP,{},'unmarried')
-      self.user = u
-      database.updateDatabase(u)
-      database.updateUserList(u)
       return u
 
 
@@ -286,8 +284,6 @@ root = MultiFactorAuth()
 # root.makeUser('Jane123','password123')
 
 root.mainloop()
-
-
 
 
 

@@ -54,14 +54,20 @@ class ManagementSystem:
     
   def getMatches(self,mainUser):
     userL = self.getDatabase().getUserList()
+      
     possibleMatches = list(filter(lambda x: (x.getGender() in mainUser.getRomanticPreference() and mainUser.getGender() in x.getRomanticPreference()), userL))
+    
     possibleMatches = list(filter(lambda x: (x.getUsername()!=mainUser.getUsername()),possibleMatches))
-    #possibleMatches = list(filter(lambda x: (x.getUserOpinionAboutKids()==mainUser.getUserOpinionAboutKids() and x.getUserOpinionAboutPets()==mainUser.getUserOpinionAboutPets()),possibleMatches))
+    
+      
+    possibleMatches = list(filter(lambda x: (x.getUserOpinionAboutKids()==mainUser.getUserOpinionAboutKids() and x.getUserOpinionAboutPets()==mainUser.getUserOpinionAboutPets()),possibleMatches))
+    
+    
     #possibleMatches = list(filter(lambda x: (x.getAge()<mainUser.getAge()+mainUser.getUserAgeImportance() and x.getAge()>mainUser.getAge()-mainUser.getUserAgeImportance()),possibleMatches))
-    if mainUser.getReligionImportance():
+    if mainUser.getUserReligionImportance()=='y':
       possibleMatches = list(filter(lambda x: (x.getUserReligion()==mainUser.getUserReligion()),possibleMatches))
     else:
-      possibleMatches = list(filter(lambda x: (x.getUserReligion()==mainUser.getUserReligion() or x.getReligionImportance()==False),possibleMatches))
+      possibleMatches = list(filter(lambda x: (x.getUserReligion()==mainUser.getUserReligion() or x.getUserReligionImportance()=='n'),possibleMatches))
     
     #get percentage from remaining possible matches
     bestMatches = []

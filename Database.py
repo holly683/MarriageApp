@@ -4,6 +4,7 @@ from replit import db
 
 class Database():
   def __init__(self):
+    #db.clear()
     self.__userList = self.populateUserList()
 
   def findUserByUsername(self, username):
@@ -43,22 +44,18 @@ class Database():
     gender = userSplit[5]
     romanticPreference = userSplit[6].split(',')
     maritalStatus = userSplit[7]
-    try:
-      mbti = userSplit[8]
-      wantPet = self.stringToBool(userSplit[9])
-      interests = userSplit[10].split(',')
-      ageRange = userSplit[11]
-      loveLanguages = userSplit[12].split(',')
-      traitsWanted = userSplit[13].split(',')
-      traits = userSplit[14].split(',')
-      religionImportance = self.stringToBool(userSplit[15])
-      religion = userSplit[16]
-      wantKids = self.stringToBool(userSplit[17])
-      inOutDoors = userSplit[18]
-      newUser = User(username, password, firstName, lastName, birthday, gender, romanticPreference, {}, maritalStatus)
-      newUser.initializeSurvey(mbti, wantPet, interests, ageRange, loveLanguages, traitsWanted, traits, religionImportance,religion, wantKids, inOutDoors)
-    except:
-      newUser = User(username, password, firstName, lastName, birthday, gender, romanticPreference, {}, maritalStatus)
+    mbti = userSplit[8]
+    wantPet = userSplit[9]
+    interests = userSplit[10].split(',')
+    ageRange = int(userSplit[11])
+    loveLanguages = userSplit[12].split(',')
+    traitsWanted = userSplit[13].split(',')
+    traits = userSplit[14].split(',')
+    religionImportance = userSplit[15]
+    religion = userSplit[16]
+    wantKids = userSplit[17]
+    newUser = User(username, password, firstName, lastName, birthday, gender, romanticPreference, {}, maritalStatus)
+    newUser.initializeSurvey(mbti, wantPet, interests, ageRange, loveLanguages, traitsWanted, traits, religionImportance,religion, wantKids)
     return newUser
     
   def populateUserList(self):
