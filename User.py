@@ -50,6 +50,8 @@ class User():
     return self.__surveyDictionary['DesiredTraits']
   def getUserPersonalityTraits(self):
     return self.__surveyDictionary['PersonalityTraits']
+  def getReligionImportance(self):
+    return 
   def getUserReligion(self):
     return self.__surveyDictionary['Religion']
   def getUserOpinionAboutKids(self):
@@ -103,17 +105,17 @@ class User():
     userOpinionAboutKids = input('Do you have or want to have kids?\n Please press Y if you do or N if you do not. ')
     userOpinionAboutKids.lower()
     surveyQ11 = {'WantKids':userOpinionAboutKids}
-    self.__surveyDictionary.update(surveyQ1)
-    self.__surveyDictionary.update(surveyQ2)
-    self.__surveyDictionary.update(surveyQ3)
-    self.__surveyDictionary.update(surveyQ4)
-    self.__surveyDictionary.update(surveyQ5)
-    self.__surveyDictionary.update(surveyQ6)
-    self.__surveyDictionary.update(surveyQ7)
-    self.__surveyDictionary.update(surveyQ8)
-    self.__surveyDictionary.update(surveyQ9)
-    self.__surveyDictionary.update(surveyQ10)
-    self.__surveyDictionary.update(surveyQ11)
+    self.__surveyDictionary['MBTI'] = surveyQ1
+    self.__surveyDictionary['WantPet'] = surveyQ2
+    self.__surveyDictionary['Interests'] = surveyQ3
+    self.__surveyDictionary['AgeRange'] = surveyQ4
+    self.__surveyDictionary['LoveLanguage'] = surveyQ5
+    self.__surveyDictionary['DesiredTraits']=surveyQ6
+    self.__surveyDictionary['PersonalityTraits']=surveyQ7
+    self.__surveyDictionary['ReligionImportance'] = surveyQ8
+    self.__surveyDictionary['Religion'] = surveyQ9
+    self.__surveyDictionary['WantKids'] = surveyQ11
+    self.__surveyDictionary['InOutDoors']=surveyQ10
     return self.__surveyDictionary
   
   def listToString(self, l):

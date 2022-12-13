@@ -7,8 +7,8 @@ from MultiFactorAuth import *
 database = Database()
 root = MultiFactorAuth()
 
-for x in database.getUserList():
-  print(x.getUsername())
+# for x in database.getUserList():
+#   print(x.getUsername())
 
 root.mainloop()
 

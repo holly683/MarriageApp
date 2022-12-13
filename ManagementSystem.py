@@ -3,9 +3,9 @@ from Database import *
 import math
 
 class ManagementSystem:
-  def __init__(self,userList):
+  def __init__(self):
     self.__database = Database()
-  def selectionSortBestMatches(l):
+  def selectionSortBestMatches(self,l):
     for i in range(len(l)):
       max = l[i]
       maxI = i
@@ -16,7 +16,7 @@ class ManagementSystem:
       l[maxI] = l[i]
       l[i] = max
     return l
-  def getDatabase():
+  def getDatabase(self):
     return self.__database
   def getMbtiCompatibilityPercentage(user1, user2):
     data = self.getDatabase()
@@ -53,15 +53,15 @@ class ManagementSystem:
     return ((pts1 + pts2) / (possiblePts1 + possiblePts2)) * 100
     
   def getMatches(self,mainUser):
-    userList = self.getDatabase().getUserList()
+    userL = self.getDatabase().getUserList()
     possibleMatches = list(filter(lambda x: (x.getGender() in mainUser.getRomanticPreference() and mainUser.getGender() in x.getRomanticPreference()), userL))
     possibleMatches = list(filter(lambda x: (x.getUsername()!=mainUser.getUsername()),possibleMatches))
-    possibleMatches = list(filter(lambda x: (x.getKids()==mainUser.getKids() and x.getPets()==mainUser.getPets()),possibleMatches))
-    possibleMatches = list(filter(lambda x: (x.getAge()<mainUser.getAge()+mainUser.getAgeDifference() and x.getAge()>mainUser.getAge()-mainUser.getAgeDifference()),possibleMatches))
+    #possibleMatches = list(filter(lambda x: (x.getUserOpinionAboutKids()==mainUser.getUserOpinionAboutKids() and x.getUserOpinionAboutPets()==mainUser.getUserOpinionAboutPets()),possibleMatches))
+    #possibleMatches = list(filter(lambda x: (x.getAge()<mainUser.getAge()+mainUser.getUserAgeImportance() and x.getAge()>mainUser.getAge()-mainUser.getUserAgeImportance()),possibleMatches))
     if mainUser.getReligionImportance():
-      possibleMatches = list(filter(lambda x: (x.getReligion()==mainUser.getReligion()),possibleMatches))
+      possibleMatches = list(filter(lambda x: (x.getUserReligion()==mainUser.getUserReligion()),possibleMatches))
     else:
-      possibleMatches = list(filter(lambda x: (x.getReligion()==mainUser.getReligion() or x.getReligionImportance()==False),possibleMatches))
+      possibleMatches = list(filter(lambda x: (x.getUserReligion()==mainUser.getUserReligion() or x.getReligionImportance()==False),possibleMatches))
     
     #get percentage from remaining possible matches
     bestMatches = []
@@ -73,7 +73,7 @@ class ManagementSystem:
       percentages.append(self.compareLists(mainUser.getLoveLanguages(),match.getLoveLanguages()))
       overallPercentages = sum(percentages)/len(percentages)
       bestMatches.append((overallPercentages,match))
-    bestMatches = selectionSort(bestMatches)
+    bestMatches = self.selectionSortBestMatches(bestMatches)
     print('Best matches for '+mainUser.getUsername()+':')
     for match in bestMatches:
       print(match[1].getUsername()+': '+str(round(match[0],2))+'% match')

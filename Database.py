@@ -21,8 +21,7 @@ class Database():
   def findPassByUser(self, username):
     for user in self.getUserList():
       if user.getUsername() == username:
-        if user.getPassword() == db[user.getUsername()[1]]:
-          return db[user.getUsername()[1]]
+        return user.getPassword()
     return -1
   
   def stringToBool(self, s):
