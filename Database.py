@@ -7,19 +7,19 @@ class Database():
     self.__userList = self.populateUserList()
 
   def findUserByUsername(self, username):
-    for user in db:
+    for user in self.getUserList():
       if user.getUsername() == username:
         return user
     return -1
 
   def deleteUserByUsername(self, username):
-    for user in db:
+    for user in self.getUserList():
       if user.getUsername() == username:
         del db[username]
     return -1
 
   def findPassByUser(self, username):
-    for user in db:
+    for user in self.getUserList():
       if user.getUsername() == username:
         if user.getPassword() == db[user.getUsername()[1]]:
           return db[user.getUsername()[1]]
